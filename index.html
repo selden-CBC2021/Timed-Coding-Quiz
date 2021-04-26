@@ -8,30 +8,29 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <div class="home"> <p> Welcome to Code Quiz! Try to answer all the questions before the timer runs out! Any questions guessed incorrectly will take 10 seconds off the timer. Click the start button to begin. Good luck! </p>
-     <button id ="start-btn" class ="start-btn btn">Start</button>
-    </div> 
-    
-        <div class = "container">
-        <div id="question-box">
-        <div id="questions">Question</div>
+    <div class="container">
+        <div id="question-box" class="hide">
+            <div id="question"><p>Question</p></div>
+            <div id="answer-buttons" class="btn-grid">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
         </div>
-        <div id="answer-btn" class="answers-btn">
-            <button class="btn">Answer 1</button>
-            <button class="btn">Answer 2</button>
-            <button class="btn">Answer 3</button>
-            <button class="btn">Answer 4</button>
-        </div>
-        <div class="card-timer">
-            <div class ="timer-text">
-            <div class="timer-count">Timer:75</div>
-            
+        <div class="home">
+             <h1> Welcome to the Code Quiz!</h1> 
+             <p> Try to answer all the questions before the timer runs out! Any questions guessed incorrectly will take 10 seconds off the timer. Click the start button to begin. Good luck!</p>
+               <button id ="start-btn" class ="btn">Start</button>   
+               <button id ="vhs-btn" class ="btn">View High Scores</button>   
+                
+            </div>
+            <div id="countdown" class="hide">Time:</div>
+            <div id="timerDisplay"></div>
           </div>
-        </div>
-        </div>
-    
-        
     
     
+      <script src="assets/js/script.js"></script>
+       
 </body>
 </html>
