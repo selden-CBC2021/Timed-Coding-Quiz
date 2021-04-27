@@ -5,12 +5,12 @@ var homeEl = document.querySelector(".home")
 var countdownEl = document.querySelector("#countdown")
 var questionEl = document.querySelector("#question")
 var answerButtonsEl = document.querySelector("#answer-buttons")
-var answer = {}
+
 
 let shuffledQuestions, currentQuestionIndex
 
-startButton.addEventListener('click', startGame)
-vhsButton.addEventListener('click', () => {
+startButton.addEventListener('click', startGame);
+answerButtonsEl.addEventListener('click', () => {
   currentQuestionIndex++
   setNextQuestion()
 })
@@ -25,6 +25,7 @@ function startGame() {
   setNextQuestion()
 }
 function setNextQuestion() {
+  resetState()
   showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 function showQuestion(question) {
@@ -42,58 +43,73 @@ function showQuestion(question) {
   })
 }
 function resetState() {
-  vhsButton.classList.add('hide')
   clearStatusClass(document.body)
+  vhsButton.classList.add('hide')
   while (answerButtonsEl.firstChild) {
     answerButtonsEl.removeChild(answerButtonsEl.firstChild)
   }
 }
 
-function selectAnswer(e) {
-  var selectedButton = e.target
+function selectAnswer(event) {
+  var selectedButton = event.target
   var correct = selectedButton.dataset.correct
- 
+  setStatusClass(document.body, correct)
+  Array.from(answerButtonsEl.children).forEach(button => {
+  setStatusClass(button, button.dataset.correct)
+  })
+  
+  if (shuffledQuestions.length > currentQuestionIndex + 1) {
+    vhsButton.innerText = "next"
+    vhsButton.classList.remove('hide')
+  } else {
+    startButton.innerText = "Play Again"
+    startButton.classList.remove('hide')
+    vhsButton.classList.remove('hide')
+  }
 }
-// function setStatusClass(element, correct) {
-//   clearStatusClass(element)
-//   if (correct) {
-//     element.classList.add('correct')
-//   } else {
-//     element.classList.add('wrong')
-//   }
-// }
-// function clearStatusClass(element) {
-//   element.classlist.remove('correct')
-//   element.classlist.remove('wrong')
-// }
+
+function setStatusClass(element, correct) {
+  clearStatusClass(element)
+  if (correct) {
+    element.classList.add('correct')
+  } else {
+    element.classList.add('incorrect')
   
-  
-  
-        
-        
-        
-      function startTimer() {
+  }
+}
+function clearStatusClass(element) {
+  element.classList.remove('correct')
+  element.classList.remove('incorrect')
+}
+
+  function startTimer() {
         var timeLeft = 75
         var timeInterval = setInterval(function () {
            timeLeft--;
-          document.querySelector('#timerDisplay').innerHTML= timeLeft;
+          document.querySelector('#timerDisplay').innerHTML = timeLeft;
         if (timeLeft < 1) {
           clearInterval(timeInterval);
           alert("Time is up!")
         }
       }, 1000);
     }
-      // startTimer();
-      startButton.onclick = function(){
+      
+        startButton.onclick = function(){
         startButton.disabled = true;
         startTimer();
-    };
+      }  
+      
+    
+    
 
   //     var countdown = function(num) {
   //   for (var i = num; i > 0; i--) {
   //     console.log(i);
   //   }
   // };
+  
+// startTimer();
+// })();
 
   var questions = [
     {
@@ -138,7 +154,7 @@ function selectAnswer(e) {
         { text: "toString()", correct: false},
         { text: "toLocaleUpperCase()", correct: false},
         { text: "substring()", correct: false},
-        { text: "toString()", correct: true}
+        { text: "toUpperCase()", correct: true}
         ]
       }
     ]
