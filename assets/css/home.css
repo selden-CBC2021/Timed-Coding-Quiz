@@ -1,0 +1,102 @@
+:root {
+    background-color: rgb(36, 26, 18);
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 62.5%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+h1 {
+    font-size: 5rem;
+    color: white;
+    margin-bottom: 5rem;
+}
+p {
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
+    color: white;
+}
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+.justify-center {
+    justify-content: center;
+}
+.text-center {
+    text-align: center;
+}
+.hide {
+    display: none;
+}
+
+.btn {
+    font-size: 2rem;
+    padding: 3rem 0;
+    width: 40rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    background-color: teal;
+    color: black;
+    border-radius: 5.5px;
+}
+.btn:hover {
+    cursor: pointer;
+    box-shadow: 1rem 1rem 1rem 1rem;
+}
+.btn[disabled]:hover {
+    cursor: not-allowed;
+}
+#highscore-btn {
+    background-color: tomato;
+}
+/* End/Highscores CSS */
+
+.end-form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 35rem;
+}
+input {
+    margin-bottom: 1.5rem;
+    width: 30rem;
+    padding: 1.3rem;
+    font-size: 2rem;
+    border: none;
+    box-shadow: 0 .5rem 1.2rem 0 black;
+}
+
+input::placeholder {
+    color: white;
+}
+#username {
+    margin-bottom: 2rem;
+    width: 100%;
+    border: none;
+}
+#end-text {
+    text-align: center;
+    font-size: 3rem;
+}
+#saveScoreBtn {
+    border: none;
+}

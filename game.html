@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Questions Page</title>
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/game.css">
+</head>
+<body>
+    <div class="container">
+        <div id="game" class="justify-center flex-column">
+            <div id="hud">
+                <div class="hud-item">
+                    <p id="questionProgress" class="hud-display">Question</p>
+                </div>
+                <div class="hud-item">
+                    <p class="hud-display">Time Remaining</p>
+                    <h1 class="hud-timer" id="timerDisplay"></h1>
+                </div>
+            </div>
+            <h1 id="question">What is the answer to the question? </h1>
+            <div class="option-container">
+                <p class="option-prefix">A</p>
+                <p class="option-text" data-number="1">Option1</p>
+            </div>
+            <div class="option-container">
+                <p class="option-prefix">B</p>
+                <p class="option-text" data-number="2">Option2</p>
+            </div>
+            <div class="option-container">
+                <p class="option-prefix">C</p>
+                <p class="option-text" data-number="3">Option3</p>
+            </div>
+            <div class="option-container">
+                <p class="option-prefix">D</p>
+                <p class="option-text" data-number="4">Option4</p>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/game.js"></script>
+    <script src="assets/js/end.js"></script>
+</body>
+</html>

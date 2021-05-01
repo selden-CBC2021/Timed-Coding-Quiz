@@ -5,11 +5,13 @@ var homeEl = document.querySelector(".home")
 var countdownEl = document.querySelector("#countdown")
 var questionEl = document.querySelector("#question")
 var answerButtonsEl = document.querySelector("#answer-buttons")
-
-
+var timerDisplay = document.querySelector('#timerDisplay');
+var timeLeft = 75
 let shuffledQuestions, currentQuestionIndex
+let currentQuestions = {}
 
 startButton.addEventListener('click', startGame);
+// this next line will make all the questions go through
 answerButtonsEl.addEventListener('click', () => {
   currentQuestionIndex++
   setNextQuestion()
@@ -22,13 +24,15 @@ function startGame() {
   countdownEl.classList.remove('hide')
   shuffledQuestions = questions.sort(() => Math.random() -.5)
   currentQuestionIndex = 0
+  availableQuestions = [...questions]
   setNextQuestion()
 }
-function setNextQuestion() {
+
+  function setNextQuestion() {
   resetState()
   showQuestion(shuffledQuestions[currentQuestionIndex])
 }
-function showQuestion(question) {
+  function showQuestion(question) {
   questionEl.innerText = question.question
   question.answers.forEach(answer => {
     var button = document.createElement('button');
@@ -40,11 +44,28 @@ function showQuestion(question) {
     button.addEventListener('click', selectAnswer)
     answerButtonsEl.appendChild(button)
     
+    
   })
 }
+function startTimer() {
+  var timeLeft = 75
+  var timeInterval = setInterval(function () {
+     timeLeft--;
+    timerDisplay.innerHTML = timeLeft;
+  if (timeLeft < 1) {
+    clearInterval(timeInterval);
+    alert("Time is up!")
+  }
+}, 1000);
+}
+
+  startButton.onclick = function(){
+  startButton.disabled = true;
+  startTimer();
+}  
+
 function resetState() {
   clearStatusClass(document.body)
-  vhsButton.classList.add('hide')
   while (answerButtonsEl.firstChild) {
     answerButtonsEl.removeChild(answerButtonsEl.firstChild)
   }
@@ -59,46 +80,36 @@ function selectAnswer(event) {
   })
   
   if (shuffledQuestions.length > currentQuestionIndex + 1) {
-    vhsButton.innerText = "next"
-    vhsButton.classList.remove('hide')
+  
+    
   } else {
-    startButton.innerText = "Play Again"
+    questionBoxEl.classList.add('hide')
     startButton.classList.remove('hide')
-    vhsButton.classList.remove('hide')
+    startButton.innerText = "Play Again"
+    
+    
   }
 }
 
 function setStatusClass(element, correct) {
+  
   clearStatusClass(element)
   if (correct) {
     element.classList.add('correct')
   } else {
     element.classList.add('incorrect')
-  
-  }
+    timeLeft = timeLeft - 10;
+      timerDisplay.innerHTML = timeLeft
+      answerButtonsEl.classList.remove('correct','incorrect')
+     
+      }
 }
 function clearStatusClass(element) {
   element.classList.remove('correct')
   element.classList.remove('incorrect')
 }
 
-  function startTimer() {
-        var timeLeft = 75
-        var timeInterval = setInterval(function () {
-           timeLeft--;
-          document.querySelector('#timerDisplay').innerHTML = timeLeft;
-        if (timeLeft < 1) {
-          clearInterval(timeInterval);
-          alert("Time is up!")
-        }
-      }, 1000);
-    }
-      
-        startButton.onclick = function(){
-        startButton.disabled = true;
-        startTimer();
-      }  
-      
+  
     
     
 
@@ -111,7 +122,7 @@ function clearStatusClass(element) {
 // startTimer();
 // })();
 
-  var questions = [
+  const questions = [
     {
         question: "Which of the following is not JavaScript Data Types?",
         answers: [

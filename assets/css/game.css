@@ -1,0 +1,42 @@
+.option-container {
+    display: flex;
+    margin-bottom: 1rem;
+    width: 100%;
+    border-radius: 5px;
+    background: teal;
+    min-width: 75rem;
+    font-size: 3.5rem
+}
+.option-container:hover {
+    cursor: pointer;
+    box-shadow: 1rem 1rem 1rem 1rem;
+
+}
+.option-prefix {
+    padding: 2rem 2.5rem;
+    color: white;
+}
+.option-text {
+    padding: 2rem;
+    width: 100%;
+}
+/* Heads up display - question number and Timer countdown */
+#hud {
+    display: flex;
+    justify-content: space-between;
+
+}
+.hud-display {
+    text-align:center;
+    font-size: 2rem;
+
+}
+.hud-timer {
+    text-align: center;
+}
+.correct {
+    background-color: lightgreen;
+}
+.incorrect {
+    background-color: rgb(230, 67, 67);
+}
