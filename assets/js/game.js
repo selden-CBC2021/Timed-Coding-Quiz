@@ -1,3 +1,5 @@
+// Calling global variables
+
 var question = document.querySelector("#question")
 var startButton = document.querySelector("#start-btn")
 var choices = Array.from(document.querySelectorAll(".option-text"));
@@ -5,6 +7,7 @@ var questionProgress = document.querySelector("#questionProgress")
 var timerDisplay = document.querySelector("#timerDisplay")
 var question = document.querySelector("#question")
 var time = 60
+
 let currentQuestion = {}
 let acceptingAnswers = true
 
@@ -61,6 +64,7 @@ let questions = [
         availableQuestions = [...questions]
         getNewQuestion();
     }
+    // I could not figure out how to do it all on one html. //  
     getNewQuestion = () => {
         if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
             localStorage.setItem('mostRecentScore', score)
@@ -69,7 +73,7 @@ let questions = [
          }
         questionCounter++
         questionProgress.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}` 
-
+        // Grabbing random questions from the from the available amount of questions. //
         var questionsIndex = Math.floor(Math.random() * availableQuestions.length)
         currentQuestion = availableQuestions[questionsIndex];
         question.innerText = currentQuestion.question
@@ -89,37 +93,40 @@ let questions = [
             var selectedChoice = e.target
             var selectedAnswer = selectedChoice.dataset['number']
 
+            // ternary operator 
             let classToApply = selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect'
             
             if(classToApply === 'correct') {
                 incrementTime(TIMER)
             }
-            // if(classToApply === 'incorrect') {
-            //     decrementTime(TIMER)
-            // }
+            if(classToApply === 'incorrect') {
+                decrementTime(TIMER)
+            }
 
             selectedChoice.parentElement.classList.add(classToApply)
 
             setTimeout(() => {
                 selectedChoice.parentElement.classList.remove(classToApply)
                 getNewQuestion();
-            }, 1000)
+            }, 500)
 
         })
     })
-
+    // + 10 points/timer for a correct answer
     incrementTime = num => {
         score +=num
         timerDisplay.innerText = score    
     }
+    // - 10 points/timer for incorrect
     decrementTime = num => {
         score -=num
         timerDisplay.innerText = score 
     }
+    // Couldn't get the score to add/subtract from the timer or to add the timer to the score for totalScore // 
 
     // document.querySelectorAll('incorrect').addEventListener('click', function() {
     //     time -= 10;
-    //     document.querySelector('#timerDisplay').innerHTML='00:'+time;
+    //     document.querySelector('#timerDisplay').innerHTML= time;
     // });
     function startTimer() {
         var time = 75

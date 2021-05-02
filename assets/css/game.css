@@ -3,7 +3,7 @@
     margin-bottom: 1rem;
     width: 100%;
     border-radius: 5px;
-    background: teal;
+    background: rgb(42, 163, 163);
     min-width: 75rem;
     font-size: 3.5rem
 }
@@ -34,6 +34,7 @@
 .hud-timer {
     text-align: center;
 }
+/* colors for correct/incorrect answers on button answers */ 
 .correct {
     background-color: lightgreen;
 }
