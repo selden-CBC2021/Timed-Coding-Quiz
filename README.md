@@ -19,12 +19,13 @@ THEN I can save my initials and my score
 - Follow the link provided below and click the 'Start' button.
 ## Usage
 - Click start to begin, answer the questions by clicking on the box containing the answer you chose. Once questions are completed you can enter your initials and click the save button to save your score. If you return to the homepage you can view high scores.
-- ![alt text](assets/images/codequiz1.PNG)
-- ![alt text](assets/images/codequiz2.PNG)
-- ![alt text](assets/images/codequiz3.PNG)
-- ![alt text](assets/images/codequiz4.PNG)
+- https://selden-cbc2021.github.io/Timed-Coding-Quiz/
+- [alt text](assets/images/codequiz1.PNG)
+- [alt text](assets/images/codequiz2.PNG)
+- [alt text](assets/images/codequiz3.PNG)
+- [alt text](assets/images/codequiz4.PNG)
 
-- - I learned that getting to know how to save things in local storage and getting more familiar with other web APIs that it's starting to make things a little easier and concepts more tangible. 
+- - I learned that getting to know how to save things in local storage and getting more familiar with other web APIs that it's starting to make things a little easier and concepts more tangible. Still struggled for many days with what seem to be relatively easy things.
 ## Credits
 - Without these tutorials I don't know if I could of got it completed by myself
 - https://www.youtube.com/watch?v=f4fB9Xg2JEY
