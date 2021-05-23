@@ -12,7 +12,7 @@ finalScore.innerHTML = mostRecentScore
 //     saveScoreBtn = !username.value
 // })
 
-saveHighScore = e => {
+saveHighScore = function(e) {
     e.preventDefault()
     
     var score = {

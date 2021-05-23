@@ -118,7 +118,7 @@ let questions = [
         timerDisplay.innerText = score    
     }
     // - 10 points/timer for incorrect
-    decrementTime = num => {
+    decrementTime = function(num) {
         score -=num
         timerDisplay.innerText = score 
     }
@@ -136,6 +136,7 @@ let questions = [
         if (time < 1) {
           clearInterval(timeInterval);
           alert("Time is up!")
+        //   return window.location.assign('index.html')
         }
       }, 1000);
       
